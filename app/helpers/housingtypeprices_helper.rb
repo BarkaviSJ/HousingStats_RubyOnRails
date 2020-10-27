@@ -1,0 +1,2 @@
+module HousingtypepricesHelper
+end

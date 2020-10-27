@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Housingtypeprices</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Region</th>
+      <th>Area code</th>
+      <th>Detached</th>
+      <th>Semidetached</th>
+      <th>Terraced</th>
+      <th>Flat</th>
+      <th>Locations</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @housingtypeprices.each do |housingtypeprice| %>
+      <tr>
+        <td><%= housingtypeprice.month %></td>
+        <td><%= housingtypeprice.year %></td>
+        <td><%= housingtypeprice.region %></td>
+        <td><%= housingtypeprice.area_code %></td>
+        <td><%= housingtypeprice.detached %></td>
+        <td><%= housingtypeprice.semidetached %></td>
+        <td><%= housingtypeprice.terraced %></td>
+        <td><%= housingtypeprice.flat %></td>
+        <td><%= housingtypeprice.location_id %></td>
+        <td><%= link_to 'Show', housingtypeprice %></td>
+        <td><%= link_to 'Edit', edit_housingtypeprice_path(housingtypeprice) %></td>
+        <td><%= link_to 'Destroy', housingtypeprice, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Housingtypeprice', new_housingtypeprice_path %>
