@@ -20,5 +20,21 @@
   <%= @location.longitude %>
 </p>
 
+<p>
+  <strong>Different types of housing prices comparison for two years:</strong>
+  <% @housingtypeprice.each do |housingtypeprice| %>
+  		<p>
+  			Area code: <%= housingtypeprice.location.area_code %><br/>
+  			Month: <%= housingtypeprice.month %><br/>
+  			Year: <%= housingtypeprice.year %><br/>
+  			Region: <%= housingtypeprice.region %><br/>
+  			Detached: <%= housingtypeprice.detached %><br/>
+            Semidetached: <%= housingtypeprice.semidetached %><br/>
+            Terraced: <%= housingtypeprice.terraced %><br/>
+            Flat: <%= housingtypeprice.flat %><br/>
+      </p>
+<% end %>
+</p>
+
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

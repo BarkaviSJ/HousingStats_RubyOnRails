@@ -1,0 +1,62 @@
+<%= form_with(model: housingtypeprice, local: true) do |form| %>
+  <% if housingtypeprice.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(housingtypeprice.errors.count, "error") %> prohibited this housingtypeprice from being saved:</h2>
+
+      <ul>
+        <% housingtypeprice.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :month %>
+    <%= form.text_field :month %>
+  </div>
+
+  <div class="field">
+    <%= form.label :year %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div class="field">
+    <%= form.label :region %>
+    <%= form.text_field :region %>
+  </div>
+
+  <div class="field">
+    <%= form.label :area_code %>
+    <%= form.text_field :area_code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :detached %>
+    <%= form.text_field :detached %>
+  </div>
+
+  <div class="field">
+    <%= form.label :semidetached %>
+    <%= form.text_field :semidetached %>
+  </div>
+
+  <div class="field">
+    <%= form.label :terraced %>
+    <%= form.text_field :terraced %>
+  </div>
+
+  <div class="field">
+    <%= form.label :flat %>
+    <%= form.text_field :flat %>
+  </div>
+
+  <div class="field">
+    <%= form.label :locations_id %>
+    <%= form.text_field :locations_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
