@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :financingtypes
   get 'house_price_uk/index'
   resources :housingtypeprices
   resources :locations

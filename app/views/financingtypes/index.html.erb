@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Financingtypes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Month</th>
+      <th>Year</th>
+      <th>Region</th>
+      <th>Area code</th>
+      <th>Average price</th>
+      <th>Cash price</th>
+      <th>Mortgage price</th>
+      <th>Locations</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @financingtypes.each do |financingtype| %>
+      <tr>
+        <td><%= financingtype.month %></td>
+        <td><%= financingtype.year %></td>
+        <td><%= financingtype.region %></td>
+        <td><%= financingtype.area_code %></td>
+        <td><%= financingtype.average_price %></td>
+        <td><%= financingtype.cash_price %></td>
+        <td><%= financingtype.mortgage_price %></td>
+        <td><%= financingtype.location_id %></td>
+        <td><%= link_to 'Show', financingtype %></td>
+        <td><%= link_to 'Edit', edit_financingtype_path(financingtype) %></td>
+        <td><%= link_to 'Destroy', financingtype, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Financingtype', new_financingtype_path %>

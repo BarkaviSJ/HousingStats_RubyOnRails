@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  month: MyString
+  year: 1
+  region: MyString
+  area_code: MyString
+  average_price: 9.99
+  cash_price: 9.99
+  mortgage_price: 9.99
+  locations: one
+
+two:
+  month: MyString
+  year: 1
+  region: MyString
+  area_code: MyString
+  average_price: 9.99
+  cash_price: 9.99
+  mortgage_price: 9.99
+  locations: two

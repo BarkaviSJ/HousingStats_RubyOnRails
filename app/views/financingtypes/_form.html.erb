@@ -1,10 +1,10 @@
-<%= form_with(model: housingtypeprice, local: true) do |form| %>
-  <% if housingtypeprice.errors.any? %>
+<%= form_with(model: financingtype, local: true) do |form| %>
+  <% if financingtype.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(housingtypeprice.errors.count, "error") %> prohibited this housingtypeprice from being saved:</h2>
+      <h2><%= pluralize(financingtype.errors.count, "error") %> prohibited this financingtype from being saved:</h2>
 
       <ul>
-        <% housingtypeprice.errors.full_messages.each do |message| %>
+        <% financingtype.errors.full_messages.each do |message| %>
           <li><%= message %></li>
         <% end %>
       </ul>
@@ -32,23 +32,18 @@
   </div>
 
   <div class="field">
-    <%= form.label :detached %>
-    <%= form.text_field :detached %>
+    <%= form.label :average_price %>
+    <%= form.text_field :average_price %>
   </div>
 
   <div class="field">
-    <%= form.label :semidetached %>
-    <%= form.text_field :semidetached %>
+    <%= form.label :cash_price %>
+    <%= form.text_field :cash_price %>
   </div>
 
   <div class="field">
-    <%= form.label :terraced %>
-    <%= form.text_field :terraced %>
-  </div>
-
-  <div class="field">
-    <%= form.label :flat %>
-    <%= form.text_field :flat %>
+    <%= form.label :mortgage_price %>
+    <%= form.text_field :mortgage_price %>
   </div>
 
   <div class="field">
