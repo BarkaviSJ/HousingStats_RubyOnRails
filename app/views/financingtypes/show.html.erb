@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Month:</strong>
+  <%= @financingtype.month %>
+</p>
+
+<p>
+  <strong>Year:</strong>
+  <%= @financingtype.year %>
+</p>
+
+<p>
+  <strong>Region:</strong>
+  <%= @financingtype.region %>
+</p>
+
+<p>
+  <strong>Area code:</strong>
+  <%= @financingtype.area_code %>
+</p>
+
+<p>
+  <strong>Average price:</strong>
+  <%= @financingtype.average_price %>
+</p>
+
+<p>
+  <strong>Cash price:</strong>
+  <%= @financingtype.cash_price %>
+</p>
+
+<p>
+  <strong>Mortgage price:</strong>
+  <%= @financingtype.mortgage_price %>
+</p>
+
+<p>
+  <strong>Locations:</strong>
+  <%= @financingtype.location_id %>
+</p>
+
+<%= link_to 'Edit', edit_financingtype_path(@financingtype) %> |
+<%= link_to 'Back', financingtypes_path %>

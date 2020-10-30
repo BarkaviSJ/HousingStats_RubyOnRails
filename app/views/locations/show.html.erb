@@ -81,7 +81,21 @@
             Flat: <%= housingtypeprice.flat %><br/>
       </p>
 <% end %>
-</p>
+
+<br/>
+  <p><strong>Different modes of financing for two years:</strong></p>
+  <% @financingtype.each do |financingtype| %>
+      <p>
+        Area code: <%= financingtype.location.area_code %><br/>
+        Month: <%= financingtype.month %><br/>
+        Year: <%= financingtype.year %><br/>
+        Region: <%= financingtype.region %><br/>
+        Average Price from both modes of financing: <%= financingtype.average_price %><br/>
+        Cash mode of financing: <%= financingtype.cash_price %><br/>
+        Mortgage mode of financing: <%= financingtype.mortgage_price %><br/>
+      </p>
+<% end %>
+
 
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>

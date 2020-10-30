@@ -11,6 +11,7 @@ class LocationsController < ApplicationController
   # GET /locations/1.json
   def show
       @housingtypeprice = Housingtypeprice.where(location:params[:id])
+      @financingtype = Financingtype.where(location:params[:id])
   end
 
   # GET /locations/new
