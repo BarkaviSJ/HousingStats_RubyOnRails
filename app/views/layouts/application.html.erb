@@ -19,7 +19,12 @@
             <%= link_to "Home", root_path %>
             <%= link_to "Locations", locations_path %>
             <%= link_to "Different types of housing prices", housingtypeprices_path %>
-             <%= link_to "Different modes of financing", financingtypes_path %>                       
+            <%= link_to "Different modes of financing", financingtypes_path %> 
+            <a href="/locations?filter_by_region=scotland">Scotland</a>
+            <a href="/locations?filter_by_region=england">England</a>
+            <a href="/locations?filter_by_region=wales">Wales</a>
+            <a href="/locations?filter_by_region=northern_ireland">Northern Ireland</a>
+            <a href="/locations?filter_by_region=combined_areas">Combined regions per UK government</a>
           </div>  
       </nav>
       </header>

@@ -3,8 +3,23 @@ class LocationsController < ApplicationController
 
   # GET /locations
   # GET /locations.json
-  def index
-    @locations = Location.all
+  # allow users to view region wise locations
+  def index 
+    @locations = 
+      case params[:filter_by_region]
+      when "england"
+        Location.where("area_code LIKE 'E%' ")
+      when "scotland"
+        Location.where("area_code LIKE 'S%' ")
+      when "wales"
+        Location.where("area_code LIKE 'W%' ")
+      when "northern_ireland"
+        Location.where("area_code LIKE 'N%' ")
+      when "combined_areas"
+        Location.where("area_code LIKE 'K%' ")
+      else
+        Location.all
+      end 
   end
 
   # GET /locations/1
@@ -62,6 +77,14 @@ class LocationsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def regions
+    @england = Location.where("area_code LIKE 'E%'")
+    @scotland = Location.where("area_code LIKE 'S%'")
+    @wales = Location.where("area_code LIKE 'W%'")
+    @northern_ireland = Location.where("area_code LIKE 'N%'")
+    @combined_areas = Location.where("area_code LIKE 'K%'")
+  end     
 
   private
     # Use callbacks to share common setup or constraints between actions.
