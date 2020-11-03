@@ -1,17 +1,31 @@
+<div class = "container">
 <h1>House Price Uk</h1>
-<p></p>
+<p>Welcome to UK HousePrice!</p>    
+    
+    <div class = "row">
+      <div class = "col-sm-12">
+        <br>
+        <div id="chart" style="width:100%;height:500px;"></div>
+      </div>
 
-<div id="container" style="width:100%;height:400px;"></div>
+    </div>
+</div>
 
+
+    
+    
+    
+    
+    
 <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded',function(){
-var myChart = Highcharts.chart('container',{
+var myChart = Highcharts.chart('chart',{
 chart: {
 type: 'bar'
 },
 title: {
-text: 'House price UK'
+text: 'Comparison between house price in the UK in 2014 and 2019'
 },
 xAxis: {
 categories: ['Detached', 'Semidetached', 'Terraced', 'Flat']
@@ -31,3 +45,4 @@ data: <%=raw @prices_array_2019 %>
 });
 });
 </script>
+    
