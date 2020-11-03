@@ -27,6 +27,17 @@ class LocationsController < ApplicationController
   def show
       @housingtypeprice = Housingtypeprice.where(location:params[:id])
       @financingtype = Financingtype.where(location:params[:id])
+      
+      #display line chart comparison of cash price and mortgage price for each location 
+      @monthly_cash_price = { 
+          2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:cash_price), 
+          2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:cash_price) 
+      }
+      
+      @monthly_mortgage_price = { 
+          2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price), 
+          2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price) 
+      }
   end
 
   # GET /locations/new
