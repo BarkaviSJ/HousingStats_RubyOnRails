@@ -56,7 +56,18 @@ class HousePriceUkController < ApplicationController
    @terraced_prices_2019 = @terraced_prices_2019/@count_2019
    @flat_prices_2019 = @flat_prices_2019/@count_2019
    @prices_array_2019 = [@detached_prices_2019, @semidetached_prices_2019, @terraced_prices_2019, @flat_prices_2019]  
+   
+   #Using Active Record queries to display the comparison data in the line chart of home page
       
+   @monthly_cash_price = { 
+    2014 => Financingtype.where(year: 2014).group(:month).map(&:cash_price), 
+    2019 => Financingtype.where(year: 2019).group(:month).map(&:cash_price) 
+  }
+
+   @monthly_mortgage_price = { 
+    2014 => Financingtype.where(year: 2014).group(:month).map(&:mortgage_price), 
+    2019 => Financingtype.where(year: 2019).group(:month).map(&:mortgage_price) 
+  }
       
   end
 end
