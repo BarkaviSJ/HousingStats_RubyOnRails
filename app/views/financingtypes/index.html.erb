@@ -1,9 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Financingtypes</h1>
+<h1>Financing types</h1>
 
-<table>
-  <thead>
+
+
+<div class="table-responsive"> 
+ <table class="table table-bordered">
+   <thead class="thead-dark">
     <tr>
       <th>Month</th>
       <th>Year</th>
@@ -15,7 +18,7 @@
       <th>Locations</th>
       <th colspan="3"></th>
     </tr>
-  </thead>
+   </thead>
 
   <tbody>
     <% @financingtypes.each do |financingtype| %>
@@ -34,8 +37,8 @@
       </tr>
     <% end %>
   </tbody>
-</table>
-
+ </table>
+</div>
 <br>
 
 <%= link_to 'New Financingtype', new_financingtype_path %>
