@@ -38,6 +38,27 @@ class LocationsController < ApplicationController
           2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price), 
           2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price) 
       }
+      
+      
+       @detached = {
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:detached),
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:detached),
+      }
+      
+      @semidetached = {
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:semidetached),
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:semidetached),
+      }
+      
+      @terraced ={
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:terraced),
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:terraced),
+      }
+      
+      @flat = {
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:flat),
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:flat),
+      }
   end
 
   # GET /locations/new
