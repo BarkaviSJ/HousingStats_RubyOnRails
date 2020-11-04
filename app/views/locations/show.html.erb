@@ -13,74 +13,58 @@
     crossorigin="">
     </script>
           
-      
-     <style>
-      #mapid { height: 400px;}
-     </style>
 
- 
+<!----------------------------------------------container for map and location---------------------------------------------->
 
-<div id="mapid" style="float: right; width: 300px"></div> 
-<script> 
-      
-    var mymap = L.map('mapid').setView([55.010, -3.010], 5);     
-          
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
-    id: 'mapbox/streets-v11',
-    tileSize: 512,
-    zoomOffset: -1,
-    accessToken: 'pk.eyJ1IjoidDE1aHMxOSIsImEiOiJja2dyaGx2amQwZjBtMnhxdzBmd2loZ3F5In0.NemiDxQl-m-_CBtwLT4R7Q'
-    }).addTo(mymap);
-       
+<div class = "container">
+    
+    <div class = "row">
         
-   
-    var marker = L.marker([<%= @location.latitude %>, <%= @location.longitude %>]).addTo(mymap);
+      <div class = "col-sm-6">
+        <p>
+          <strong>Region:</strong>
+          <%= @location.region %>
+        </p>
 
-          
+        <p>
+          <strong>Area code:</strong>
+          <%= @location.area_code %>
+        </p>
+
+        <p>
+          <strong>Latitude:</strong>
+          <%= @location.latitude %>
+        </p>
+
+        <p>
+          <strong>Longitude:</strong>
+          <%= @location.longitude %>
+        </p>
+      </div>
         
-</script>
+      <div class = "col-sm-6">
+        <div id="mapid" style="width: 100%; height:500px;"></div> 
+      </div>
+        
+    </div>
+</div>
+
+<!--------------------------------------------------------------------------------------------------->
 
 
-
+<br>
 
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Region:</strong>
-  <%= @location.region %>
-</p>
+<br>
 
-<p>
-  <strong>Area code:</strong>
-  <%= @location.area_code %>
-</p>
 
-<p>
-  <strong>Latitude:</strong>
-  <%= @location.latitude %>
-</p>
+<!--------------------------------table with type of house-------------------------------------->
 
-<p>
-  <strong>Longitude:</strong>
-  <%= @location.longitude %>
-</p>
-
-<style>
-  .row {
-    display: flex;
-  }
-
-  .column {
-    flex: 50%;
-  }
-</style>
-
-<div class="row">
-  <div class="column">
-    <table>
-    <thead>
+<div class="table-responsive"> 
+ <table class="table table-bordered">
+     <caption style="font-size: 1.5em"><strong>Price for type of house</strong></caption>
+  <thead class="thead-dark">
         <tr>
             <th>Month</th>
             <th>Year</th>
@@ -95,7 +79,6 @@
   <tbody>
   <% @housingtypeprice.each do |housingtypeprice| %>
 
-   
         <tr>
             
             <td><%= housingtypeprice.month %></td>
@@ -109,13 +92,19 @@
 
   <% end %>
   </tbody>
-  </table>
+ </table>
+</div>
 
-<br/>
+<!------------------------------------------------------------------------------------------------------>
 
+<br>
 
-<table>
-    <thead>
+<!--------------------------------------------------------table with financingtype-------------------------------------------->
+
+<div class="table-responsive"> 
+ <table class="table table-bordered">
+ <caption style="font-size: 1.5em"><strong>Financing Type</strong></caption>
+  <thead class="thead-dark">
         <tr>
             <th>Month</th>
             <th>Year</th>
@@ -123,12 +112,11 @@
             <th>Cash Price</th>
             <th>Mortgage Price</th>
         </tr>
-    </thead>
+   </thead>
    
 
   <tbody>
   <% @financingtype.each do |financingtype| %>
-
    
         <tr>
             <td><%= financingtype.month %></td>
@@ -140,30 +128,58 @@
 
   <% end %>
   </tbody>
-  </table>
-  </div>
-  <div class="column">
-    <div id="linechart" style="width:100%;height:400px;"></div>
-  </div>
+ </table>
 </div>
 
-<p>
-  
+<!---------------------------------------------------------------------------------------------------------------->
 
+
+<br>
+
+
+<!---------------------------------------------------charts---------------------------------------------------------->
+<div class = "container">
+<p>Linechart</p>   
+    <div class = "row">
+      <div class = "col-sm-12">
+        <br>
+        <div id="linechart" style="width:100%;height:400px;"></div> 
+      </div>
+    </div>
+</div>
+
+
+<br>
+    
+<div class = "container">
+<p>Bar chart</p>   
+    <div class = "row">
+      <div class = "col-sm-12">
+        <br>
+        <div id="chart" style="width:100%;height:400px;"></div> 
+      </div>
+    </div>
+</div>    
+    
+<!-------------------------------------------------------------------------------------------------------------------------->
+
+<div class = "container">
 <%= link_to 'Edit', edit_location_path(@location) %> |
 <%= link_to 'Back', locations_path %>
+</div>
 
-<div id="container" style="width:100%;height:400px;"></div>
+
+
 
 <script type="text/javascript">
 
 document.addEventListener('DOMContentLoaded',function(){
-  var myChart = Highcharts.chart('container',{
+  var myChart = Highcharts.chart('chart',{
     chart: {
       type: 'bar'
     },
     title: {
-      text: 'House price UK'
+      text: 'Comparison between price avarage of 2014 and 2019'
     },
     xAxis: {
       categories: ['Detached', 'Semidetached', 'Terraced', 'Flat']
@@ -247,3 +263,27 @@ document.addEventListener('DOMContentLoaded',function(){
 
 })});
 </script>
+
+
+<script> 
+      
+    var mymap = L.map('mapid').setView([55.010, -3.010], 5);     
+          
+    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+    accessToken: 'pk.eyJ1IjoidDE1aHMxOSIsImEiOiJja2dyaGx2amQwZjBtMnhxdzBmd2loZ3F5In0.NemiDxQl-m-_CBtwLT4R7Q'
+    }).addTo(mymap);
+       
+        
+   
+    var marker = L.marker([<%= @location.latitude %>, <%= @location.longitude %>]).addTo(mymap);
+
+          
+        
+</script>
+
+
