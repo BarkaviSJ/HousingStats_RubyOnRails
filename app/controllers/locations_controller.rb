@@ -32,35 +32,34 @@ class LocationsController < ApplicationController
       @financingtype = Financingtype.where(location:params[:id])
       
       #display line chart comparison of cash price and mortgage price for each location 
-      @monthly_cash_price = { 
-          2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:cash_price), 
-          2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:cash_price) 
+       @monthly_cash_price = { 
+          2014 => Financingtype.where(year:2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }, 
+          2019 => Financingtype.where(year:2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }
       }
       
       @monthly_mortgage_price = { 
-          2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price), 
-          2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:mortgage_price) 
+          2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:mortgage_price).sum }, 
+          2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:mortgage_price).sum } 
       }
       
-      
        @detached = {
-          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:detached),
-          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:detached),
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:detached).sum },
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:detached).sum }
       }
       
       @semidetached = {
-          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:semidetached),
-          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:semidetached),
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:semidetached).sum },
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:semidetached).sum }
       }
       
       @terraced ={
-          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:terraced),
-          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:terraced),
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:terraced).sum },
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:terraced).sum }
       }
       
       @flat = {
-          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group(:month).map(&:flat),
-          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group(:month).map(&:flat),
+          2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:flat).sum },
+          2019 => Housingtypeprice.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:flat).sum }
       }
   end
 
