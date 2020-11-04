@@ -8,7 +8,7 @@ This applications compares UK housing price data between in 2014 and 2019. The v
 
 
 ## Deployed application
-The live application has been deployed on the heroku platform and can be accessed through the following link: https://gentle-sands-97842.herokuapp.com/locations  
+The live application has been deployed on the heroku platform and can be accessed through the following link: http://fierce-anchorage-39379.herokuapp.com/  
 
 
 ## System Requirements 
@@ -48,4 +48,7 @@ Run the following commands:
     - heroku run rake db:seed 
 
 
+
 ###### These are the parts that are not working correctly 
+* The locations page in the Heroku does not work properly because of a pagination error: postgreSQL database does not support the pagination method we implemented. As a result the page is not shown when the user clicks on the location button in the navigation bar. You can see the locations page through this link http://fierce-anchorage-39379.herokuapp.com/locations?page=1. (note: the pages for each country such as Scotland, England, etc work well).
+* The graphs in the show page are not shown when the values in the tables are zero. 
