@@ -1,7 +1,7 @@
 # README
 
 # UK HOUSING STATISTICS WEB APPLICATION :computer:
-###### *Developed by: Barkavi Sundararajan - Student ID: 51989442, Annarachele Altorio - Student ID:    , Hakim Saumtally - Student ID:*
+###### *Developed by: Barkavi Sundararajan - Student ID: 51989442, Annarachele Altorio - Student ID: 51990020   , Hakim Saumtally - Student ID:*
 ### About the application:
 Housing Application is .
 
@@ -12,10 +12,12 @@ The live application has been deployed on the heroku platform and can be accesse
 
 ## System Requirements 
 #### This application has the following system dependencies:
-* Ruby version  - ''
-* Rails version  - ''
+* Ruby version  - 2.6.5
+* Rails version  - 6.0.3.4
 * Heroku version - ''
-* Gems installed are 
+* Gems installed are:
+    pg version 1.2.3
+    bootstrap version 3.4.1
 
 ____
 
