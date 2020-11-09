@@ -59,7 +59,7 @@ class HousePriceUkController < ApplicationController
    
    #Using Active Record queries to display the comparison data in the line chart of home page
       
-   @monthly_cash_price = { 
+@monthly_cash_price = { 
     2014 => Financingtype.where(year: 2014).group_by(&:month).map { |month, values| values.map(&:cash_price) }.map(&:sum), 
     2019 => Financingtype.where(year: 2019).group_by(&:month).map { |month, values| values.map(&:cash_price) }.map(&:sum)
   }

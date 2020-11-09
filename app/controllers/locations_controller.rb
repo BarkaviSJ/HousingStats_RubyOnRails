@@ -34,7 +34,8 @@ class LocationsController < ApplicationController
       @financingtype = Financingtype.where(location:params[:id])
       
       #display line chart comparison of cash price and mortgage price for each location 
-      @monthly_cash_price = { 
+
+       @monthly_cash_price = { 
           2014 => Financingtype.where(year:2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }, 
           2019 => Financingtype.where(year:2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }
       }
@@ -43,7 +44,6 @@ class LocationsController < ApplicationController
           2014 => Financingtype.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:mortgage_price).sum }, 
           2019 => Financingtype.where(year: 2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:mortgage_price).sum } 
       }
-      
       
        @detached = {
           2014 => Housingtypeprice.where(year: 2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:detached).sum },
