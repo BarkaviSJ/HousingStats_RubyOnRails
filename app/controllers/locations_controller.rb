@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
     
   LOCATIONS_PER_PAGE = 14 #Assigning constant for pagination
   def index 
-      @page = params.fetch(:page, 1).to_i
+      @page = params.fetch(:page, 0).to_i -1
     @locations = 
       case params[:filter_by_region]
       when "england"
