@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
     
   LOCATIONS_PER_PAGE = 14 #Assigning constant for pagination
   def index 
-      @page = params.fetch(:page, 0).to_i - 1
+      @page = params.fetch(:page, 1).to_i
     @locations = 
       case params[:filter_by_region]
       when "england"
@@ -22,6 +22,8 @@ class LocationsController < ApplicationController
         Location.where("area_code LIKE 'K%' ")
       else
         Location.offset(@page * LOCATIONS_PER_PAGE).limit(LOCATIONS_PER_PAGE)
+        
+        
       end 
   end
 
@@ -32,6 +34,7 @@ class LocationsController < ApplicationController
       @financingtype = Financingtype.where(location:params[:id])
       
       #display line chart comparison of cash price and mortgage price for each location 
+
        @monthly_cash_price = { 
           2014 => Financingtype.where(year:2014, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }, 
           2019 => Financingtype.where(year:2019, region: Location.find(params[:id]).region).group_by(&:month).map { |_, values| values.map(&:cash_price).sum }
