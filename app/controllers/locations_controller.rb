@@ -7,7 +7,7 @@ class LocationsController < ApplicationController
     
   LOCATIONS_PER_PAGE = 14 #Assigning constant for pagination
   def index 
-      @page = params.fetch(:page, 0).to_i -1
+      @page = params.fetch(:page, 0).to_i - 1
     @locations = 
       case params[:filter_by_region]
       when "england"
@@ -21,7 +21,7 @@ class LocationsController < ApplicationController
       when "combined_areas"
         Location.where("area_code LIKE 'K%' ")
       else
-        Location.offset(@page * LOCATIONS_PER_PAGE).limit(LOCATIONS_PER_PAGE)
+        Location.offset([0, @page * LOCATIONS_PER_PAGE].max).limit(LOCATIONS_PER_PAGE)
         
         
       end 
